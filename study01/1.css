@@ -1,0 +1,84 @@
+/* 1、注释 */
+/* 会被编译 */
+/* 2、变量 */
+.box {
+  width: 300px;
+  height: 300px;
+  background-color: red;
+  border: 3px solid #000;
+}
+/* 混合 */
+.border {
+  border: 3px solid #000;
+}
+.box2 {
+  width: 300px;
+  height: 300px;
+  background-color: red;
+  border: 3px solid #000;
+  margin-left: 100px;
+  border: 13px solid #ffff00;
+  border: 20px solid #ffc0cb;
+}
+.box3 {
+  border-width: 20px;
+  border-color: transparent transparent #0000ff transparent;
+  border-style: dashed dashed solid dashed;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+.pipei {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background-color: blue;
+}
+.yunsuan {
+  width: 610px;
+  height: 300px;
+  background-color: #686868;
+}
+ul {
+  width: 500px;
+  padding: 0;
+  list-style: none;
+}
+ul li {
+  height: 50px;
+  line-height: 50px;
+}
+ul li a {
+  font-size: 30px;
+  text-decoration: none;
+  color: red;
+}
+ul li a:hover {
+  color: blue;
+}
+ul li span {
+  font-size: 40px;
+  color: #0000ff;
+}
+ul li:hover {
+  background-color: yellow;
+}
+.arguments {
+  width: 200px;
+  height: 200px;
+  background-color: #666 ;
+  border: #0000ff 50px solid;
+}
+.test {
+  width: calc(300px-30px);
+  height: 300px;
+  background-color: red;
+}
+.important {
+  width: 300px;
+  height: 300px;
+  background-color: green;
+  border: 10px solid  red;
+  border: 5px solid #000 !important;
+  width: 500px !important;
+}

@@ -1,0 +1,96 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+
+
+///////////////////////条件语句/////////////////////////////
+.section{
+	margin-top:20px;
+}
+.size(@w,@h){
+width: @w;
+height: @h;
+background-color: red;
+}
+
+//当宽度大于200的时候，背景是绿色的
+.size(@w,@h) when (@w>200){
+ 
+background-color: green;
+}
+//当宽度大于200小于500的时候，背景是黄色的
+.size(@w,@h) when (@w>200) and (@w<500){
+ 
+background-color: yellow;
+}
+
+//当宽度不小于400的时候，背景是粉色的
+.size(@w,@h) when not(@w<400) {
+ 
+background-color: pink;
+}
+.section-1{
+	.size(200px,100px)
+}
+//less 中when语句满足多个条件，执行最后一个
+.section-2{
+	.size(300px,100px)
+}
+.section-3{
+	.size(500px,100px) 
+}
+////////////////////内置方法/////////////////////////////////
+// 数学方法
+.item{
+	margin-bottom:10px;
+	height:30px;
+	background-color: blue;
+}
+//为每一个 item设置宽度
+.item-1{
+	width: 1px+1in; // 1 in 代表1英寸
+	width: 1in-1px; // 1 in 代表1英寸
+	width: 1in * 1px;
+	width: 1pt / 1in;
+}
+.item-2{
+	width: floor(5.2in);
+	width: ceil(5.2in);
+	width: round(5.2in);
+	width: percentage(0.5);
+}
+// 1in等于96px
+.item-3{
+	width:max(10px,1in,15px)
+}
+
+//色彩创建方法
+.color{
+	margin-bottom:10px;
+	height:30px;
+	width: 100px; 
+}
+
+.color-1{
+  background-color: rgb(23,45,46);
+}
+.color-2{
+  background-color: rgba(23,45,46,0.5);
+}
+.color-3{
+  background-color: hsl(23,0.5,0.6);
+}
+
+
+@color1:#333666;
+@color2:rgba(200,30%,50%,0.5);
+@color3:hsl(300,50%,50%);
+
+//色彩通道方法
+.color-4{
+	width: hue(@color3);
+	width: green(@color2);
+}
+
+//色彩操作方法

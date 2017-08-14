@@ -1,0 +1,144 @@
+/* 1、注释 */
+/* 会被编译 */
+// 不会被编译
+
+/* 2、变量 */
+@test_width:300px;
+
+.box{
+	width:@test_width;
+	height: @test_width;
+	background-color: red;
+	.border;
+}
+
+/* 混合 */
+.border{
+	border: 3px solid #000;
+}
+.box2{
+	.box;
+	margin-left:100px;
+    .border2(13px);
+    .border3();
+}
+//混合带参数
+.border2(@border_width){
+  border:@border_width solid yellow;
+}
+//混合带默认值
+.border3(@border_width:20px){
+  border:@border_width solid pink;
+}
+.box3{
+  .sanjiao2(top,20px,blue); 
+}
+
+ 
+//匹配模式
+.sanjiao2(top,@w:10px,@c:#000){
+	border-width: @w;
+	border-color: transparent transparent @c transparent;
+	border-style: dashed dashed solid dashed  
+}
+.sanjiao2(bottom,@w:10px,@c:#000){    
+	border-width: @w;
+	border-color:@c transparent transparent transparent;
+	border-style:solid  dashed dashed dashed  
+}
+
+.sanjiao2(@_,@w:10px,@c:#000){ // @_ 是固定的写法  '@w:10px,@c:#000' 也必须加上
+    width: 0;                  //不管匹配到 top 还是 bottom 这里的样式都会加上
+	height: 0;
+	overflow: hidden;
+}
+//匹配-----定位
+.pos(r){    
+  position: relative;
+}
+.pos(a){
+	position: absolute; 
+}
+.pos(f){
+	position: fixed;
+}
+.pos(@_){ 
+	width: 200px;
+	height: 200px;
+	background-color: blue;
+}
+.pipei{
+	.pos(r);
+}
+
+
+//运算
+@width:300px;
+.yunsuan{
+	width:(@width+5)*2;
+	height: 300px;
+	background-color: #ccc-100;
+}
+
+// 嵌套
+
+ul{
+	width: 500px;
+	padding: 0;
+	list-style:none;
+
+	li{
+		height: 50px;
+		line-height: 50px;
+		a{
+			font-size: 30px;
+			text-decoration: none;
+			color: red;
+			&:hover{
+				color: blue;
+			};
+		};
+		span{
+			font-size: 40px;
+			color: blue
+		};
+        &:hover{
+        	background-color: yellow;
+        } 
+	}
+}
+
+//@arguments变量
+
+.border_arg(@c:red,@w:30px,@xx:solid){
+	border:@arguments;
+}
+.arguments{
+	width: 200px;
+	height: 200px;
+	background-color:#666 ;
+	.border_arg(blue,50px);
+}
+
+// 避免编译
+
+.test{
+	width:~'calc(300px-30px)';
+	height: 300px;
+	background-color: red;
+}
+
+//!important
+
+.test_important(){
+	border:5px solid #000;
+	width: 500px;
+}
+
+.important{
+	width: 300px;
+	height: 300px;
+	background-color: green;
+	border:10px solid  red;
+	.test_important() !important;
+}
